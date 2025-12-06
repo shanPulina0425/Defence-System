@@ -4,17 +4,24 @@
  */
 package view;
 
+import interfaces.Observable;
+
 /**
  *
  * @author shanp
  */
-public class Submarine extends javax.swing.JFrame {
+public class Submarine extends javax.swing.JFrame implements Observable {
 
     /**
      * Creates new form Helicopter
      */
-    public Submarine() {
+    
+    private MainController maincontroller;
+            
+    public Submarine(MainController maincontroller) {
+        
         initComponents();
+        this.maincontroller=maincontroller;
     }
 
     /**
@@ -152,38 +159,7 @@ public class Submarine extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Submarine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Submarine().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ammoButton;
@@ -198,4 +174,10 @@ public class Submarine extends javax.swing.JFrame {
     private javax.swing.JTextArea textArea1;
     private javax.swing.JTextField textField1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void setMessage(String message) {
+         // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         textArea1.setText(message);
+    }
 }
